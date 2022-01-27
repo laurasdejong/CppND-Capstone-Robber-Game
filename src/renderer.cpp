@@ -40,8 +40,11 @@ Renderer::~Renderer() {
 
 void Renderer::Render(Snake const snake, SDL_Point const &food) {
   SDL_Rect block;
+  SDL_Rect block2;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
+  block2.w = screen_width / (grid_width*5);
+  block2.h = screen_height / (grid_height*5);
 
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0, 232, 99, 0.8);
@@ -71,11 +74,20 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
   }
   SDL_RenderFillRect(sdl_renderer, &block);
 
+   // Render snake's eyes
+  block2.x = static_cast<int>(snake.head_x) * block.w +block2.w;
+  block2.y = static_cast<int>(snake.head_y) * block.h +block2.h;
+  SDL_SetRenderDrawColor(sdl_renderer, 200, 100, 10, 0.8);
+  SDL_RenderFillRect(sdl_renderer, &block2); //left
+  block2.x = static_cast<int>(snake.head_x) * block.w +3*block2.w;
+  SDL_RenderFillRect(sdl_renderer, &block2); //right
+
+
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps) {
-  std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+  std::string title{"Robbed gold: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
