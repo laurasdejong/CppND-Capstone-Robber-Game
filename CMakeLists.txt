@@ -16,6 +16,6 @@ include_directories(${SDL2_INCLUDE_DIRS}
 src
 include)
 
-add_executable(robberGame src/main.cpp src/game.cpp src/controller.cpp src/renderer.cpp src/snake.cpp)
+add_executable(robberGame src/main.cpp src/game.cpp src/controller.cpp src/renderer.cpp src/robber.cpp)
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(robberGame ${SDL2_LIBRARIES})
