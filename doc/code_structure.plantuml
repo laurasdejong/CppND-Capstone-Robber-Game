@@ -1,13 +1,35 @@
 @startuml
 
-class Main {
-  main()
+class Start {
+  + main
 }
 
-package gameLoop <<Rectangle>>{
-.Main --> Input
-Input --> Update
-Update --> Render
+class Game_ {
+  + Run
+}
+
+ Start --> Game_
+
+
+package Game.Run <<Rectangle>>{
+    class Controller {
+    + HandleInput
+    + ChangeDirection
+    }
+
+    class Game {
+    + Update
+    }
+
+    class Render {
+    + Render
+    }
+
+
+    .Game_ --> Controller
+    Controller --> Game
+    Game --> Render
+    Controller::HandleInput --> Controller::ChangeDirection
 }
 
 @enduml
