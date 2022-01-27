@@ -19,10 +19,8 @@ TODO
 The goal of this game is to rob as much gold as possible.
 
 ## Code structure
-TODO
-Input
-Update
-Render
+
+<img src="doc/code_structure.png"/>
 
 ## Rubric points
 
