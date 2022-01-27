@@ -5,13 +5,12 @@ Capstone project of Laura de Jong in the Udacity C++ Nanodegree Program, build u
 
 ## Instructions
 
-OUTDATED
 Clone the project repository:
-    ```git clone https://github.com/laurasdejong/CppND-Program-a-Concurrent-Traffic-Simulation.git```
+    ```git clone https://github.com/laurasdejong/CppND-Capstone-Robber-Game.git```
 
 Build the project: ```make build```
 
-Run the resulting executable in <yourpath>/CppND-Program-a-Concurrent-Traffic-Simulation/build: ```./robberGame```
+Run the resulting executable in <yourpath>/CppND-Capstone-Robber-Game/build: ```./robberGame```
 
 For more info see: https://github.com/udacity/CppND-Program-a-Concurrent-Traffic-Simulation
 
