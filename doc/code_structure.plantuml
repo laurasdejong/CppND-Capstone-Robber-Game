@@ -1,0 +1,13 @@
+@startuml
+
+class Main {
+  main()
+}
+
+package gameLoop <<Rectangle>>{
+.Main --> Input
+Input --> Update
+Update --> Render
+}
+
+@enduml
