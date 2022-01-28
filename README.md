@@ -29,13 +29,13 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 ### README
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| A README with instructions is included with the project| - [x] |this |
-| The README indicates which project is chosen.| - [x] |See [Game play](#Game) and [Code structure](#Code)|
-| The README includes information about each rubric point addressed.| - [x] |this|
+| A README with instructions is included with the project| :ballot_box_with_check: |this |
+| The README indicates which project is chosen.| :ballot_box_with_check: |See [Game play](#Game) and [Code structure](#Code)|
+| The README includes information about each rubric point addressed.| :ballot_box_with_check: |this|
 ### Compiling and Testing
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| The submission must compile and run.| - [x] | See [Instructions](#instructions)|
+| The submission must compile and run.| :ballot_box_with_check: | See [Instructions](#instructions)|
 ### Loops, Functions, I/O
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
