@@ -34,6 +34,7 @@ class Target {
   bool growing{false};
   int grid_width;
   int grid_height;
+  int gold;
 
   private:
 };

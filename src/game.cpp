@@ -8,7 +8,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)),
       mode_(GameState::walk) {
-  PlaceFood();
+  PlaceTarget();
 }
 
 void Game::Play(Controller const &controller, Renderer &renderer,
@@ -29,8 +29,8 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       Update();
       renderer.Render(robber_, food);
     } else {
-      std::cout << "swithced talk to walk, now switching back" << std::endl;
-      mode_ = GameState::walk;
+      controller.AskForGold(robber_);
+      RobbingTarget();
     }
 
     frame_end = SDL_GetTicks();
@@ -56,7 +56,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
   }
 }
 
-void Game::PlaceFood() {
+void Game::PlaceTarget() {
   int x, y;
   while (true) {
     x = random_w(engine);
@@ -71,6 +71,18 @@ void Game::PlaceFood() {
   }
 }
 
+void Game::RobbingTarget(){
+  int temp_target = 60;
+  if (temp_target < robber_.AskedAmount()){
+    std::cout << "Your life then!" << std::endl;
+    robber_.gold += temp_target;
+  } else {
+    std::cout << "Stealing your gold! Bye!" << std::endl;
+    robber_.gold +=robber_.AskedAmount();
+  }
+  mode_ = GameState::walk;
+}
+
 void Game::Update() {
   if (!robber_.alive) return;
 
@@ -83,7 +95,7 @@ void Game::Update() {
   if (food.x == new_x && food.y == new_y) {
     mode_ = GameState::talk;
     score++;
-    PlaceFood();
+    PlaceTarget();
     // Grow robber and increase speed.
     // robber.GrowBody();
     // robber.speed += 0.02;

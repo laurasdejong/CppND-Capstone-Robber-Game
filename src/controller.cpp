@@ -9,6 +9,13 @@ void Controller::ChangeDirection(Robber &robber, Robber::Direction input,
   return;
 }
 
+void Controller::AskForGold(Robber &robber) const{
+  std::cout << "Your gold or your life! I demand:git  (input amount[0-1000])" << std::endl;
+  robber.AskedAmount(50);
+  // todo read out user input in terminal
+
+}
+
 void Controller::HandleInput(bool &running, Robber &robber) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {

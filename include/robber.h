@@ -10,6 +10,12 @@ class Robber: public Target {
   // enum class Direction { kUp, kDown, kLeft, kRight };
 
   Robber(int grid_width, int grid_height):Target(grid_width,grid_height){}
+
+  // getters
+  int AskedAmount(){return asked_amount_;}
+
+  // Setters
+  void AskedAmount(int i){asked_amount_=i;}
   //     : grid_width(grid_width),
   //       grid_height(grid_height),
   //       head_x(grid_width / 2),
@@ -30,6 +36,7 @@ class Robber: public Target {
   // std::vector<SDL_Point> body;
 
  private:
+ int asked_amount_;
 //   void UpdateHead();
 //   // void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
 

@@ -9,6 +9,9 @@
 - Sketch layout
 - Make 'walk' and 'talk' loops
 
+### Controller
+- Read input from user
+
 ### Render
 
 - Screens for 'robber-mode'
@@ -20,7 +23,6 @@
 ### Robber
 - Make robber.gold
 - Make robber.payRobberGuild
-- Make inherit from targets (gold)
 
 ### Targets
 

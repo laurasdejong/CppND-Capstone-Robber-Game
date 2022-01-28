@@ -28,8 +28,9 @@ class Game {
   int score{0};
   GameState mode_;
 
-  void PlaceFood();
+  void PlaceTarget();
   void Update();
+  void RobbingTarget();
 };
 
 #endif
