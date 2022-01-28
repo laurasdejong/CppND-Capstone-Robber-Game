@@ -3,14 +3,15 @@
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : robber(grid_width, grid_height),
+    : robber_(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
-      random_h(0, static_cast<int>(grid_height - 1)) {
+      random_h(0, static_cast<int>(grid_height - 1)),
+      mode_(GameState::walk) {
   PlaceFood();
 }
 
-void Game::Run(Controller const &controller, Renderer &renderer,
+void Game::Play(Controller const &controller, Renderer &renderer,
                std::size_t target_frame_duration) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
@@ -22,10 +23,15 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   while (running) {
     frame_start = SDL_GetTicks();
 
-    // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, robber);
-    Update();
-    renderer.Render(robber, food);
+    if (mode_ == GameState::walk){
+      // Input, Update, Render - the main game loop.
+      controller.HandleInput(running, robber_);
+      Update();
+      renderer.Render(robber_, food);
+    } else {
+      std::cout << "swithced talk to walk, now switching back" << std::endl;
+      mode_ = GameState::walk;
+    }
 
     frame_end = SDL_GetTicks();
 
@@ -57,7 +63,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a robber item before placing
     // food.
-    if (!robber.RobberCell(x, y)) {
+    if (!robber_.RobberCell(x, y)) {
       food.x = x;
       food.y = y;
       return;
@@ -66,15 +72,16 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
-  if (!robber.alive) return;
+  if (!robber_.alive) return;
 
-  robber.Update();
+  robber_.Update();
 
-  int new_x = static_cast<int>(robber.head_x);
-  int new_y = static_cast<int>(robber.head_y);
+  int new_x = static_cast<int>(robber_.head_x);
+  int new_y = static_cast<int>(robber_.head_y);
 
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
+    mode_ = GameState::talk;
     score++;
     PlaceFood();
     // Grow robber and increase speed.
@@ -84,4 +91,4 @@ void Game::Update() {
 }
 
 int Game::GetScore() const { return score; }
-int Game::GetSize() const { return robber.size; }
+int Game::GetSize() const { return robber_.size; }

@@ -7,8 +7,6 @@
 
 ## Game play
 - Sketch layout
-- Switching modes
-- Change 'run' in 'play'
 - Make 'walk' and 'talk' loops
 
 ### Render

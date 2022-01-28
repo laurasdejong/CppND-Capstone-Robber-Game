@@ -5,14 +5,14 @@ class Start {
 }
 
 
-package Game.play <<Rectangle>>{
+' package Game.play <<Rectangle>>{
   class Game {
-    + play
+    + Play
   }
 
-  .Start --> Game
+  Start --> Game
 
-  package Game.walk <<Rectangle>>{
+  package GameState.walk <<Rectangle>>{
     class Controller {
     + HandleInput
     }
@@ -25,14 +25,13 @@ package Game.play <<Rectangle>>{
     + Render
     }
 
-
     .Game ..> Controller
     Controller --> Game_
     Game_ --> Render
     Render --> .Game
   }
 
-  package Game.talk <<Rectangle>>{
+  package GameState.talk <<Rectangle>>{
     class Controller__ {
       + AskForMoney
     }
@@ -45,6 +44,6 @@ package Game.play <<Rectangle>>{
   }
 
 
-}
+' }
 
 @enduml
