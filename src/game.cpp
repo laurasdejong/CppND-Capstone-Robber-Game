@@ -63,7 +63,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a robber item before placing
     // food.
-    if (!robber_.RobberCell(x, y)) {
+    if (!robber_.TargetCell(x, y)) {
       food.x = x;
       food.y = y;
       return;
