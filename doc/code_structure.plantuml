@@ -4,20 +4,20 @@ class Start {
   + main
 }
 
-class Game_ {
-  + Run
-}
 
- Start --> Game_
+package Game.play <<Rectangle>>{
+  class Game {
+    + play
+  }
 
+  .Start --> Game
 
-package Game.Run <<Rectangle>>{
+  package Game.walk <<Rectangle>>{
     class Controller {
     + HandleInput
-    + ChangeDirection
     }
 
-    class Game {
+    class Game_ {
     + Update
     }
 
@@ -26,10 +26,25 @@ package Game.Run <<Rectangle>>{
     }
 
 
-    .Game_ --> Controller
-    Controller --> Game
-    Game --> Render
-    Controller::HandleInput --> Controller::ChangeDirection
+    .Game ..> Controller
+    Controller --> Game_
+    Game_ --> Render
+    Render --> .Game
+  }
+
+  package Game.talk <<Rectangle>>{
+    class Controller__ {
+      + AskForMoney
+    }
+    class Game__{
+      + Robbing
+    }
+    .Game ..> Controller__
+    Controller__ --> Game__
+    Game__ --> .Game
+  }
+
+
 }
 
 @enduml

@@ -15,8 +15,10 @@ Run the resulting executable in <yourpath>/CppND-Capstone-Robber-Game/build: ```
 For more info see: https://github.com/udacity/CppND-Program-a-Concurrent-Traffic-Simulation
 
 ## Game play
-TODO
-The goal of this game is to rob as much gold as possible.
+
+The goal of this game is to rob as much gold as possible. The game has two modes. First the robber needs to track its target, after which the game switches to robbing-mode then the robber must decide how much to extort. If the robber asks for more than the target can give, the robber kills the target, and influences future income because of decreased 'town income'(thus, targets wil carry less). However, when the target has the amount the robber asks for, only that amount is transferred to the robber. Each n seconds, the robber has to pay a fee to the 'robbers guild'.
+
+The game ends when either the town is empty, the robber is bankrupt, or the robber has earned enough to declare himself 'robber king'.
 
 ## Code structure
 
@@ -27,13 +29,13 @@ The goal of this game is to rob as much gold as possible.
 ### README
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| A README with instructions is included with the project|X|this |
-| The README indicates which project is chosen.|X|this |
-| The README includes information about each rubric point addressed.|X|this|
+| A README with instructions is included with the project|- [x] |this |
+| The README indicates which project is chosen.|- [x] |See [Game play](#Game) and [Code structure](#Code)|
+| The README includes information about each rubric point addressed.|- [x] |this|
 ### Compiling and Testing
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| The submission must compile and run.|X| See [Instructions](#instructions)|
+| The submission must compile and run.|- [x] | See [Instructions](#instructions)|
 ### Loops, Functions, I/O
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
