@@ -29,8 +29,9 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       Update();
       renderer.Render(robber_, food);
     } else {
-      controller.AskForGold(robber_);
+      controller.AskForGold(running, robber_);
       RobbingTarget();
+      std::cout << "Robber now has: " << robber_.gold<< std::endl;
     }
 
     frame_end = SDL_GetTicks();
@@ -102,5 +103,5 @@ void Game::Update() {
   }
 }
 
-int Game::GetScore() const { return score; }
-int Game::GetSize() const { return robber_.size; }
+int Game::GetScore() const { return robber_.gold; }
+// int Game::GetSize() const { return robber_.size; }

@@ -21,7 +21,6 @@
 - End screen, showing reason of termination, gold and time
 
 ### Robber
-- Make robber.gold
 - Make robber.payRobberGuild
 
 ### Targets

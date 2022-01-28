@@ -6,7 +6,7 @@
 class Controller {
  public:
   void HandleInput(bool &running, Robber &robber) const;
-  void AskForGold(Robber &robber) const;
+  void AskForGold(bool &running, Robber &robber) const;
 
  private:
   void ChangeDirection(Robber &robber, Robber::Direction input,
