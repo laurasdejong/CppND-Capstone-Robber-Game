@@ -6,11 +6,9 @@
 - Fill rubric criteria
 
 ## Game play
-- Sketch layout
-- Make 'walk' and 'talk' loops
 
 ### Controller
-- Read input from user
+- Make controller robust. Bug: when an arrow is pressed in the terminal, the demand is permanently set to 0, skipping the input 'wait'
 
 ### Render
 
@@ -21,11 +19,14 @@
 - End screen, showing reason of termination, gold and time
 
 ### Robber
-- Make robber.payRobberGuild
+- Make robber.payRobbersGuild
+    - substract on timer
+    - add consequences to game (kill game if no gold)
 
 ### Targets
 
-- Make targets.gold
+- Make targets instead of point/food/whatever
+- Vary targets godl
 - Make targets move
 - Spawn multiple targets
 
@@ -34,5 +35,5 @@
 
 ### Misc
 
-- Town income (throught targets.gold)
+- Town income (throught targets.townsize)
 -

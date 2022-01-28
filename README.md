@@ -14,7 +14,7 @@ Run the resulting executable in <yourpath>/CppND-Capstone-Robber-Game/build: ```
 
 For more info see: https://github.com/udacity/CppND-Program-a-Concurrent-Traffic-Simulation
 
-## Game play
+## Gameplay
 
 The goal of this game is to rob as much gold as possible. The game has two modes. First the robber needs to track its target, after which the game switches to robbing-mode then the robber must decide how much to extort. If the robber asks for more than the target can give, the robber kills the target, and influences future income because of decreased 'town income'(thus, targets wil carry less). However, when the target has the amount the robber asks for, only that amount is transferred to the robber. Each n seconds, the robber has to pay a fee to the 'robbers guild'.
 
@@ -30,7 +30,7 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
 | A README with instructions is included with the project| :ballot_box_with_check: |this |
-| The README indicates which project is chosen.| :ballot_box_with_check: |See [Game play](#Game) and [Code structure](#Code)|
+| The README indicates which project is chosen.| :ballot_box_with_check: |See [Game play](#gameplay) and [Code structure](#code)|
 | The README includes information about each rubric point addressed.| :ballot_box_with_check: |this|
 ### Compiling and Testing
 | Criteria       |Intended| Displayed in  |
@@ -41,7 +41,7 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 | ------------- |:---:| ---------------:|
 | The project demonstrates an understanding of C++ functions and control structures.| | |
 | The project reads data from a file and process the data, or the program writes data to a file.| | |
-| The project accepts user input and processes the input.| | |
+| The project accepts user input and processes the input.|:ballot_box_with_check: |Controller::AskForGold|
 ### Object Oriented Programming
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
