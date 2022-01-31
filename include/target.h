@@ -15,16 +15,20 @@ class Target {
         gold_(10),
         grid_width(grid_width),
         grid_height(grid_height),
-        head_x(grid_width / 2),
-        head_y(grid_height / 2),
+        head_x_(grid_width / 2),
+        head_y_(grid_height / 2),
         speed_(0.08f){}
 
 // Getters
   bool Alive() const {return alive_;}
   int Gold() const {return gold_;}
+  float X() const {return head_x_;}
+  float Y() const {return head_y_;}
 
 
 // Setters
+  void X(float x){head_x_ =x;};
+  void Y(float y){head_y_ =y;};
 
 // Functions
   void AddGold(int gold){gold_+=gold;}
@@ -33,14 +37,14 @@ class Target {
   bool TargetCell(int x, int y);
 
   Direction direction;
-  float head_x;
-  float head_y;
   int grid_width;
   int grid_height;
 
  private:
   bool alive_;
   int gold_;
+  float head_x_;
+  float head_y_;
   float speed_;
 };
 

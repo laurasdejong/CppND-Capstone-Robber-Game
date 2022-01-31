@@ -6,34 +6,34 @@ void Target::Update() {
 
     switch (direction) {
     case Direction::kUp:
-      head_y -= speed_;
+      head_y_ -= speed_;
       break;
 
     case Direction::kDown:
-      head_y += speed_;
+      head_y_ += speed_;
       break;
 
     case Direction::kLeft:
-      head_x -= speed_;
+      head_x_ -= speed_;
       break;
 
     case Direction::kRight:
-      head_x += speed_;
+      head_x_ += speed_;
       break;
   }
 
   // Wrap the Target around to the beginning if going off of the screen.
-  head_x = fmod(head_x + grid_width, grid_width);
-  head_y = fmod(head_y + grid_height, grid_height);
+  head_x_ = fmod(head_x_ + grid_width, grid_width);
+  head_y_ = fmod(head_y_ + grid_height, grid_height);
 
   SDL_Point current_cell{
-      static_cast<int>(head_x),
-      static_cast<int>(head_y)};  // Capture the head's cell after updating.
+      static_cast<int>(head_x_),
+      static_cast<int>(head_y_)};  // Capture the head's cell after updating.
 }
 
 // // Inefficient method to check if cell is occupied by Target.
 bool Target::TargetCell(int x, int y) {
-  if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
+  if (x == static_cast<int>(head_x_) && y == static_cast<int>(head_y_)) {
     return true;
   }
   return false;

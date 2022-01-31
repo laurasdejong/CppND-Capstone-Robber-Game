@@ -67,8 +67,8 @@ void Game::PlaceTarget() {
     // Check that the location is not occupied by a robber item before placing
     // food.
     if (!robber_.TargetCell(x, y)) {
-      target_.head_x = x;
-      target_.head_y = y;
+      target_.X(x);
+      target_.Y(y);
       std::uniform_int_distribution<> random_g(0,max_gold);
       target_.AddGold(random_g(engine)+1);
       return;
@@ -93,11 +93,11 @@ void Game::Update() {
 
   robber_.Update();
 
-  int new_x = static_cast<int>(robber_.head_x);
-  int new_y = static_cast<int>(robber_.head_y);
+  int new_x = static_cast<int>(robber_.X());
+  int new_y = static_cast<int>(robber_.Y());
 
   // Check if there's food over here
-  if (target_.head_x == new_x && target_.head_y == new_y) {
+  if (target_.X() == new_x && target_.Y() == new_y) {
     mode_ = GameState::talk;
     score++;
     PlaceTarget();

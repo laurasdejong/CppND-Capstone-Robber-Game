@@ -27,6 +27,7 @@
 - Make targets move
 - Spawn multiple targets
 - Shoudl update go to robber?
+- CurrentCell eruit?
 
 ### World
 - Create obstacles

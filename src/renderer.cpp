@@ -48,22 +48,22 @@ void Renderer::Render(Robber const robber, Target const target) {
   SDL_RenderClear(sdl_renderer);
 
   // Render target
-  block.x = static_cast<int>(target.head_x) * block.w;
-  block.y = static_cast<int>(target.head_y) * block.h;
+  block.x = static_cast<int>(target.X()) * block.w;
+  block.y = static_cast<int>(target.Y()) * block.h;
   SDL_SetRenderDrawColor(sdl_renderer, 214, 124, 22, 0.8);
   SDL_RenderFillRect(sdl_renderer, &block);
-  DrawEyes(target.head_x,target.head_y);
+  DrawEyes(target.X(),target.Y());
 
   // Render robber
-  block.x = static_cast<int>(robber.head_x) * block.w;
-  block.y = static_cast<int>(robber.head_y) * block.h;
+  block.x = static_cast<int>(robber.X()) * block.w;
+  block.y = static_cast<int>(robber.Y()) * block.h;
   if (robber.Alive()) {
     SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 0.8);
   } else {
     SDL_SetRenderDrawColor(sdl_renderer, 20, 103, 154, 0.8);
   }
   SDL_RenderFillRect(sdl_renderer, &block);
-  DrawEyes(robber.head_x,robber.head_y);
+  DrawEyes(robber.X(),robber.Y());
 
 
   // Update Screen
