@@ -13,6 +13,7 @@ class Renderer {
 
   void Render(Robber const robber, Target const target);
   void UpdateWindowTitle(int score, int fps);
+  void DrawEyes(float x, float y);
 
  private:
   SDL_Window *sdl_window;

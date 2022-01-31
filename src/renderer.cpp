@@ -40,39 +40,21 @@ Renderer::~Renderer() {
 
 void Renderer::Render(Robber const robber, Target const target) {
   SDL_Rect block;
-  SDL_Rect block2;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
-  block2.w = screen_width / (grid_width*5);
-  block2.h = screen_height / (grid_height*5);
 
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0, 232, 99, 0.8);
   SDL_RenderClear(sdl_renderer);
 
-  // Render food
-  // SDL_SetRenderDrawColor(sdl_renderer, 214, 124, 22, 0.8);
-  // block.x = food.x * block.w;
-  // block.y = food.y * block.h;
-  // SDL_RenderFillRect(sdl_renderer, &block);
+  // Render target
   block.x = static_cast<int>(target.head_x) * block.w;
   block.y = static_cast<int>(target.head_y) * block.h;
   SDL_SetRenderDrawColor(sdl_renderer, 214, 124, 22, 0.8);
   SDL_RenderFillRect(sdl_renderer, &block);
+  DrawEyes(target.head_x,target.head_y);
 
-   // Render robber's eyes
-  block2.x = static_cast<int>(target.head_x) * block.w +block2.w;
-  block2.y = static_cast<int>(target.head_y) * block.h +block2.h;
-  SDL_SetRenderDrawColor(sdl_renderer, 200, 100, 10, 0.8);
-  SDL_RenderFillRect(sdl_renderer, &block2); //left
-  block2.x = static_cast<int>(target.head_x) * block.w +3*block2.w;
-  SDL_RenderFillRect(sdl_renderer, &block2); //right
-
-
-
-
-
-  // Render robber's head
+  // Render robber
   block.x = static_cast<int>(robber.head_x) * block.w;
   block.y = static_cast<int>(robber.head_y) * block.h;
   if (robber.Alive()) {
@@ -81,14 +63,7 @@ void Renderer::Render(Robber const robber, Target const target) {
     SDL_SetRenderDrawColor(sdl_renderer, 20, 103, 154, 0.8);
   }
   SDL_RenderFillRect(sdl_renderer, &block);
-
-   // Render robber's eyes
-  block2.x = static_cast<int>(robber.head_x) * block.w +block2.w;
-  block2.y = static_cast<int>(robber.head_y) * block.h +block2.h;
-  SDL_SetRenderDrawColor(sdl_renderer, 200, 100, 10, 0.8);
-  SDL_RenderFillRect(sdl_renderer, &block2); //left
-  block2.x = static_cast<int>(robber.head_x) * block.w +3*block2.w;
-  SDL_RenderFillRect(sdl_renderer, &block2); //right
+  DrawEyes(robber.head_x,robber.head_y);
 
 
   // Update Screen
@@ -98,4 +73,17 @@ void Renderer::Render(Robber const robber, Target const target) {
 void Renderer::UpdateWindowTitle(int score, int fps) {
   std::string title{"Robbed gold: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
+}
+
+void Renderer::DrawEyes(float x, float y){
+  SDL_Rect block2;
+  block2.w = screen_width / (grid_width*5);
+  block2.h = screen_height / (grid_height*5);
+     // Render robber's eyes
+  block2.x = static_cast<int>(x) * (screen_width /grid_width)+block2.w;
+  block2.y = static_cast<int>(y) * (screen_width /grid_width) +block2.h;
+  SDL_SetRenderDrawColor(sdl_renderer, 200, 100, 10, 0.8);
+  SDL_RenderFillRect(sdl_renderer, &block2); //left
+  block2.x = static_cast<int>(x) * (screen_width /grid_width) +3*block2.w;
+  SDL_RenderFillRect(sdl_renderer, &block2); //right
 }
