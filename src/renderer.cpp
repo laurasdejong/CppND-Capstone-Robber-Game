@@ -67,7 +67,7 @@ void Renderer::Render(Robber const robber, SDL_Point const &food) {
   // Render robber's head
   block.x = static_cast<int>(robber.head_x) * block.w;
   block.y = static_cast<int>(robber.head_y) * block.h;
-  if (robber.alive) {
+  if (robber.Alive()) {
     SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 0.8);
   } else {
     SDL_SetRenderDrawColor(sdl_renderer, 20, 103, 154, 0.8);

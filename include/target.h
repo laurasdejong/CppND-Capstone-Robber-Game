@@ -9,25 +9,26 @@ class Target {
   enum class Direction { kUp, kDown, kLeft, kRight };
 
   Target(int grid_width, int grid_height)
-      : gold(0),
+      : alive_(true),
+        direction(Direction::kUp),
+        gold(0),
         grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),
         head_y(grid_height / 2),
-        speed(0.1f),
-        size(1),
-        alive(true){}
+        speed_(0.08f){}
 
   void Update();
+  bool Alive() const {return alive_;};
 
   // void GrowBody();
   bool TargetCell(int x, int y);
 
-  Direction direction = Direction::kUp;
+  Direction direction;
 
-  float speed;
-  int size;
-  bool alive;
+  float speed_;
+  // int size;
+  // bool alive_;
   float head_x;
   float head_y;
   // std::vector<SDL_Point> body;
@@ -42,6 +43,7 @@ class Target {
 
   private:
   float townsize_;
+  bool alive_;
 };
 
 #endif

@@ -6,7 +6,7 @@
 
 void Controller::ChangeDirection(Robber &robber, Robber::Direction input,
                                  Robber::Direction opposite) const {
-  if (robber.direction != opposite || robber.size == 1) robber.direction = input;
+  if (robber.direction != opposite) robber.direction = input;
   return;
 }
 

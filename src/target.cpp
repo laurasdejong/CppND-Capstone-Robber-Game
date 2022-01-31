@@ -6,19 +6,19 @@ void Target::Update() {
 
     switch (direction) {
     case Direction::kUp:
-      head_y -= speed;
+      head_y -= speed_;
       break;
 
     case Direction::kDown:
-      head_y += speed;
+      head_y += speed_;
       break;
 
     case Direction::kLeft:
-      head_x -= speed;
+      head_x -= speed_;
       break;
 
     case Direction::kRight:
-      head_x += speed;
+      head_x += speed_;
       break;
   }
 
@@ -88,10 +88,5 @@ bool Target::TargetCell(int x, int y) {
   if (x == static_cast<int>(head_x) && y == static_cast<int>(head_y)) {
     return true;
   }
-  // for (auto const &item : body) {
-  //   if (x == item.x && y == item.y) {
-  //     return true;
-  //   }
-  // }
   return false;
 }

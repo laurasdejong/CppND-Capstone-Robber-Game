@@ -85,7 +85,7 @@ void Game::RobbingTarget(){
 }
 
 void Game::Update() {
-  if (!robber_.alive) return;
+  if (!robber_.Alive()) return;
 
   robber_.Update();
 
