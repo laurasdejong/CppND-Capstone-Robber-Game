@@ -16,8 +16,7 @@ int main() {
   Game game(kGridWidth, kGridHeight);
   game.Play(controller, renderer, kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
-  std::cout << "Gold: " << game.GetScore() << "\n";
-  // std::cout << "Town size: " << game.GetSize() << "\n";
-  // std::cout << "RobberKing"
+  std::cout << "Robber has gold: " << game.GetScore() << "\n";
+  std::cout << "Targets carrying max: " << game.GetMaxGold() << "\n";
   return 0;
 }

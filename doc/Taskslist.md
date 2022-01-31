@@ -35,4 +35,4 @@
 ### Misc
 
 - Stripping unused functions
-- Magic numbers watch
+- Magic numbers watch -> read from yaml?

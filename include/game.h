@@ -15,6 +15,7 @@ class Game {
   void Play(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
+  int GetMaxGold(){return max_gold;};
   // int GetSize() const;
 
  private:

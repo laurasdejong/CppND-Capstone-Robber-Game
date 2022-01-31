@@ -41,7 +41,6 @@ class Target {
  private:
   bool alive_;
   int gold_;
-  // float townsize_;
   float speed_;
 };
 
