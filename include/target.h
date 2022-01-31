@@ -12,7 +12,7 @@ class Target {
   Target(int grid_width, int grid_height)
       : alive_(true),
         direction(Direction::kUp),
-        gold_(0),
+        gold_(10),
         grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),

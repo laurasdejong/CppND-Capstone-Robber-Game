@@ -5,9 +5,10 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : robber_(grid_width, grid_height),
       engine(dev()),
+       mode_(GameState::walk),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)),
-      mode_(GameState::walk) {
+      t_start_(std::chrono::system_clock::now()) {
   PlaceTarget();
 }
 
@@ -28,7 +29,6 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       controller.HandleInput(running, robber_);
       Update();
       renderer.Render(robber_, food);
-      robber_.PayRobbersGuild();
     } else {
       controller.AskForGold(running, robber_);
       RobbingTarget();
@@ -103,8 +103,12 @@ void Game::Update() {
     // robber.speed += 0.02;
   }
 
-  // check every once in a while
-  // Pay robbersGuild
+  // check every update_time_ms_ (=second)
+  long t_delta = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - t_start_).count();
+  if (t_delta >= guild_time_ms_){
+    robber_.PayRobbersGuild();
+    t_start_ = std::chrono::system_clock::now();
+    }
   // Spawn
 }
 

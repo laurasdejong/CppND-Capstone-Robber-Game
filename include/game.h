@@ -6,6 +6,8 @@
 #include "controller.h"
 #include "renderer.h"
 #include "robber.h"
+#include <iostream>
+#include <thread>
 
 class Game {
  public:
@@ -24,8 +26,10 @@ class Game {
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;
   std::uniform_int_distribution<int> random_h;
+  std::chrono::time_point<std::chrono::system_clock> t_start_;
 
   int score{0};
+  const long guild_time_ms_{1000}; //every second
   GameState mode_;
 
   void PlaceTarget();
