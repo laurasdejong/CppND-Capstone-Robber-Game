@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Robber const robber, Target const target) {
+void Renderer::Render(Robber const robber, Target const target, std::vector<SDL_Point> deaths) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -46,6 +46,11 @@ void Renderer::Render(Robber const robber, Target const target) {
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0, 232, 99, 0.8);
   SDL_RenderClear(sdl_renderer);
+
+  // Render deaths
+  for (SDL_Point death: deaths){
+    DrawEyes(death.x,death.y);
+  }
 
   // Render target
   block.x = static_cast<int>(target.X()) * block.w;

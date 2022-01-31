@@ -31,8 +31,9 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       // Input, Update, Render - the main game loop.
       controller.HandleInput(running, robber_);
       Update();
-      renderer.Render(robber_, target_);
+      renderer.Render(robber_, target_, deaths_);
     } else {
+      std::cout << "debug: target carries" << target_.Gold() << std::endl;
       controller.AskForGold(running, robber_,max_gold_);
       RobbingTarget();
       std::cout << "Robber now has: " << robber_.Gold()<< std::endl;
@@ -72,7 +73,8 @@ void Game::PlaceTarget() {
       target_.X(x);
       target_.Y(y);
       std::uniform_int_distribution<> random_g(0,max_gold_);
-      target_.AddGold(random_g(engine)+1);
+      int store = random_g(engine)+1;
+      target_.Gold(store);
       return;
     }
   }
@@ -82,7 +84,10 @@ void Game::RobbingTarget(){
   if (target_.Gold() < robber_.AskedAmount()){
     std::cout << "Only "<< target_.Gold()<<" gold? Your life then!" << std::endl;
     robber_.AddGold(target_.Gold());
-    max_gold_ = std::max(max_gold_-20,0);
+    max_gold_ = std::max(max_gold_-20,0); //Targets carry less money
+    // SDL_Point death{static_cast<int>(target_.X()),
+    //   static_cast<int>(target_.Y())};
+    deaths_.push_back(last_position_);
   } else {
     std::cout << "Stealing your gold! Bye!" << std::endl;
     robber_.AddGold(robber_.AskedAmount());
@@ -101,10 +106,9 @@ void Game::Update() {
   // Check if there's food over here
   if (target_.X() == new_x && target_.Y() == new_y) {
     mode_ = GameState::talk;
+    last_position_.x = static_cast<int>(target_.X());
+    last_position_.y = static_cast<int>(target_.Y());
     PlaceTarget();
-    // Grow robber and increase speed.
-    // robber.GrowBody();
-    // robber.speed += 0.02;
   }
 
   // check every update_time_ms_ (=second)

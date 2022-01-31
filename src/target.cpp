@@ -25,10 +25,6 @@ void Target::Update() {
   // Wrap the Target around to the beginning if going off of the screen.
   head_x_ = fmod(head_x_ + grid_width_, grid_width_);
   head_y_ = fmod(head_y_ + grid_height_, grid_height_);
-
-  SDL_Point current_cell{
-      static_cast<int>(head_x_),
-      static_cast<int>(head_y_)};  // Capture the head's cell after updating.
 }
 
 // // Inefficient method to check if cell is occupied by Target.

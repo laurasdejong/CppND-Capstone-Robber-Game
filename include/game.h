@@ -18,27 +18,30 @@ class Game {
   //Getters
   int GetScore() const;
   int GetMaxGold(){return max_gold_;};
-  // int GetSize() const;
 
  private:
   enum GameState{talk, walk};
-  Robber robber_;
-  Target target_;
-  // SDL_Point food;
 
+  // functions
+  void PlaceTarget();
+  void Update();
+  void RobbingTarget();
+
+  // variables
+  std::vector<SDL_Point> deaths_;
+  const long guild_time_ms_;
+  SDL_Point last_position_;
+  int max_gold_;
+  GameState mode_;
+  Robber robber_;
+  std::chrono::time_point<std::chrono::system_clock> t_start_;
+  Target target_;
+
+  // Random
   std::random_device dev;
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;
   std::uniform_int_distribution<int> random_h;
-  std::chrono::time_point<std::chrono::system_clock> t_start_;
-
-  int max_gold_;
-  const long guild_time_ms_; //every second
-  GameState mode_;
-
-  void PlaceTarget();
-  void Update();
-  void RobbingTarget();
 };
 
 #endif

@@ -33,6 +33,7 @@ class Target {
 
 // Functions
   void AddGold(int gold){gold_+=gold;}
+  void Gold(int gold){gold_=gold;}
   void Update();
   bool TargetCell(int x, int y);
 
