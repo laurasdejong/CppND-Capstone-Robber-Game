@@ -39,19 +39,19 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 ### Loops, Functions, I/O
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| The project demonstrates an understanding of C++ functions and control structures.| | |
-| The project reads data from a file and process the data, or the program writes data to a file.| | |
+| The project demonstrates an understanding of C++ functions and control structures.|:ballot_box_with_check: | For instance, class Game|
+| The project reads data from a file and process the data, or the program writes data to a file.|-| |
 | The project accepts user input and processes the input.|:ballot_box_with_check: |Controller::AskForGold|
 ### Object Oriented Programming
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| The project uses Object Oriented Programming techniques.| | |
-| Classes use appropriate access specifiers for class members.| | |
-| Class constructors utilize member initialization lists.| | |
+| The project uses Object Oriented Programming techniques.|:ballot_box_with_check:|For instance, class Robber |
+| Classes use appropriate access specifiers for class members.|:ballot_box_with_check:| For instance, class Target |
+| Class constructors utilize member initialization lists.|:ballot_box_with_check:| For instance, class Target |
 | Classes abstract implementation details from their interfaces.| | |
 | Classes encapsulate behavior.| | |
 | Classes follow an appropriate inheritance hierarchy.| | |
-| Overloaded functions allow the same function to operate on different parameters.| | |
+| Overloaded functions allow the same function to operate on different parameters.| :ballot_box_with_check:|Robber::AskedAmount |
 | Derived class functions override virtual base class functions.| | |
 | Templates generalize functions in the project.| | |
 ### Memory Management
@@ -66,7 +66,7 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 ### Concurrency
 | Criteria       |Intended| Displayed in  |
 | ------------- |:---:| ---------------:|
-| The project uses multithreading.| | |
-| A promise and future is used in the project.| | |
-| A mutex or lock is used in the project.| | |
-| A condition variable is used in the project.| | |
+| The project uses multithreading.|-| |
+| A promise and future is used in the project.|-| |
+| A mutex or lock is used in the project.|-| |
+| A condition variable is used in the project.|-| |

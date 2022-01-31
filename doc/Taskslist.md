@@ -27,8 +27,6 @@
 - Make targets move
 - Spawn multiple targets
 - Shoudl update go to robber?
-- Add an appropiate amount of gold
-- make random engine depend on townsize
 
 ### World
 - Create obstacles
@@ -36,6 +34,5 @@
 
 ### Misc
 
-- Town income (throught targets.townsize)
 - Stripping unused functions
 - Magic numbers watch
