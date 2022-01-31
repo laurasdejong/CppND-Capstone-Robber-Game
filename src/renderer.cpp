@@ -49,7 +49,7 @@ void Renderer::Render(Robber const robber, Target const target, std::vector<SDL_
 
   // Render deaths
   for (SDL_Point death: deaths){
-    DrawEyes(death.x,death.y);
+    DrawDeath(death.x,death.y);
   }
 
   // Render target
@@ -91,4 +91,23 @@ void Renderer::DrawEyes(float x, float y){
   SDL_RenderFillRect(sdl_renderer, &block2); //left
   block2.x = static_cast<int>(x) * (screen_width /grid_width) +3*block2.w;
   SDL_RenderFillRect(sdl_renderer, &block2); //right
+}
+
+void Renderer::DrawDeath(float x, float y){
+  SDL_Rect block2;
+  block2.w = screen_width / (grid_width*5);
+  block2.h = screen_height / grid_height;
+  SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 0.8);
+
+  // Render vertical
+  block2.x = static_cast<int>(x) * (screen_width /grid_width)+2*block2.w;
+  block2.y = static_cast<int>(y) * (screen_width /grid_width);
+  SDL_RenderFillRect(sdl_renderer, &block2);
+
+  // Render horizontal
+  block2.w = screen_width / (grid_width);
+  block2.h = screen_height / (grid_height*5);
+  block2.x = static_cast<int>(x) * (screen_width /grid_width);
+  block2.y = static_cast<int>(y) * (screen_width /grid_width)+2*block2.h;
+  SDL_RenderFillRect(sdl_renderer, &block2);
 }

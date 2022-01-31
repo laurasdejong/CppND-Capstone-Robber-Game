@@ -13,6 +13,7 @@ class Renderer {
 
   void Render(Robber const robber, Target const target,std::vector<SDL_Point> deaths);
   void UpdateWindowTitle(int score, int fps);
+  void DrawDeath(float x, float y);
   void DrawEyes(float x, float y);
 
  private:
