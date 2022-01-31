@@ -17,7 +17,6 @@
 - Leaving 'kills' on the screen
 - Start screen
 - End screen, showing reason of termination, gold and time
-- MakePuppet function
 
 ### Robber
 - Make robber.payRobbersGuild
@@ -25,8 +24,6 @@
 
 ### Targets
 
-- Make targets instead of point/food/whatever
-- Vary targets gold
 - Make targets move
 - Spawn multiple targets
 
@@ -38,3 +35,4 @@
 
 - Town income (throught targets.townsize)
 - Stripping unused functions
+- Magic numbers watch

@@ -69,16 +69,16 @@ void Game::PlaceTarget() {
     if (!robber_.TargetCell(x, y)) {
       target_.head_x = x;
       target_.head_y = y;
+      target_.AddGold(random_w(engine)+1);
       return;
     }
   }
 }
 
 void Game::RobbingTarget(){
-  int temp_target = 60;
-  if (temp_target < robber_.AskedAmount()){
-    std::cout << "Your life then!" << std::endl;
-    robber_.AddGold(temp_target);
+  if (target_.Gold() < robber_.AskedAmount()){
+    std::cout << "Only "<< target_.Gold()<<" gold? Your life then!" << std::endl;
+    robber_.AddGold(target_.Gold());
   } else {
     std::cout << "Stealing your gold! Bye!" << std::endl;
     robber_.AddGold(robber_.AskedAmount());

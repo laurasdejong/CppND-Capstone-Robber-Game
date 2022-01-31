@@ -11,7 +11,7 @@ void Controller::ChangeDirection(Robber &robber, Robber::Direction input,
 }
 
 void Controller::AskForGold(bool &running, Robber &robber) const{
-  std::cout << "Your gold or your life! I demand:  ([0 - 1000])" << std::endl;
+  std::cout << "Your gold or your life! I demand:  ([0 - 650])" << std::endl;
   int gold;
   std::cin >> gold ;
   robber.AskedAmount(std::clamp(gold, 0,1000));
