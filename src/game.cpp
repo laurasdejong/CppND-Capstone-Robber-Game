@@ -69,7 +69,8 @@ void Game::PlaceTarget() {
     if (!robber_.TargetCell(x, y)) {
       target_.head_x = x;
       target_.head_y = y;
-      target_.AddGold(random_w(engine)+1);
+      std::uniform_int_distribution<> random_g(0,max_gold);
+      target_.AddGold(random_g(engine)+1);
       return;
     }
   }
