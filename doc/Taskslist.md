@@ -14,7 +14,6 @@
 
 - Screens for 'robber-mode'
 - Pretty puppets
-- Leaving 'kills' on the screen
 - Start screen
 - End screen, showing reason of termination, gold and time
 
@@ -27,7 +26,6 @@
 - Make targets move
 - Spawn multiple targets
 - Shoudl update go to robber?
-- CurrentCell eruit?
 
 ### World
 - Create obstacles
