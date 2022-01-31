@@ -21,7 +21,6 @@
 
 ### Robber
 - Make robber.payRobbersGuild
-    - substract on timer
     - add consequences to game (kill game if no gold)
 
 ### Targets
