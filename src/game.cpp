@@ -28,6 +28,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       controller.HandleInput(running, robber_);
       Update();
       renderer.Render(robber_, food);
+      robber_.PayRobbersGuild();
     } else {
       controller.AskForGold(running, robber_);
       RobbingTarget();
@@ -101,6 +102,10 @@ void Game::Update() {
     // robber.GrowBody();
     // robber.speed += 0.02;
   }
+
+  // check every once in a while
+  // Pay robbersGuild
+  // Spawn
 }
 
 int Game::GetScore() const { return robber_.Gold(); }

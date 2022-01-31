@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "SDL.h"
+#include <iostream>
 
 class Target {
  public:
@@ -27,29 +28,21 @@ class Target {
 
 // Functions
   void AddGold(int gold){gold_+=gold;}
+  void PayGold(int gold){gold_-=gold;}
   void Update();
   bool TargetCell(int x, int y);
 
   Direction direction;
-
-  float speed_;
-  // int size;
-  // bool alive_;
   float head_x;
   float head_y;
-  // std::vector<SDL_Point> body;
-
-  // void UpdateHead();
-  // void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
-
-  // bool growing{false};
   int grid_width;
   int grid_height;
 
-  private:
+ private:
   bool alive_;
   int gold_;
-  float townsize_;
+  // float townsize_;
+  float speed_;
 };
 
 #endif
