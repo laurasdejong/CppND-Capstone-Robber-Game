@@ -30,6 +30,7 @@ class Game {
   std::chrono::time_point<std::chrono::system_clock> t_start_;
 
   int score{0};
+  int max_gold{200};
   const long guild_time_ms_{1000}; //every second
   GameState mode_;
 

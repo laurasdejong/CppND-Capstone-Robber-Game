@@ -31,7 +31,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       Update();
       renderer.Render(robber_, target_);
     } else {
-      controller.AskForGold(running, robber_);
+      controller.AskForGold(running, robber_,max_gold);
       RobbingTarget();
       std::cout << "Robber now has: " << robber_.Gold()<< std::endl;
     }
@@ -79,6 +79,7 @@ void Game::RobbingTarget(){
   if (target_.Gold() < robber_.AskedAmount()){
     std::cout << "Only "<< target_.Gold()<<" gold? Your life then!" << std::endl;
     robber_.AddGold(target_.Gold());
+    max_gold = std::max(max_gold-20,0);
   } else {
     std::cout << "Stealing your gold! Bye!" << std::endl;
     robber_.AddGold(robber_.AskedAmount());
@@ -109,6 +110,7 @@ void Game::Update() {
   if (t_delta >= guild_time_ms_){
     robber_.PayRobbersGuild();
     t_start_ = std::chrono::system_clock::now();
+    max_gold++;
     }
   // Spawn
 }
