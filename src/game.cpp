@@ -5,7 +5,9 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : robber_(grid_width, grid_height),
       engine(dev()),
-       mode_(GameState::walk),
+      guild_time_ms_(1000),
+      max_gold_(100),
+      mode_(GameState::walk),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)),
       t_start_(std::chrono::system_clock::now()),
@@ -31,7 +33,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       Update();
       renderer.Render(robber_, target_);
     } else {
-      controller.AskForGold(running, robber_,max_gold);
+      controller.AskForGold(running, robber_,max_gold_);
       RobbingTarget();
       std::cout << "Robber now has: " << robber_.Gold()<< std::endl;
     }
@@ -45,7 +47,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(robber_.Gold(), frame_count);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -69,7 +71,7 @@ void Game::PlaceTarget() {
     if (!robber_.TargetCell(x, y)) {
       target_.X(x);
       target_.Y(y);
-      std::uniform_int_distribution<> random_g(0,max_gold);
+      std::uniform_int_distribution<> random_g(0,max_gold_);
       target_.AddGold(random_g(engine)+1);
       return;
     }
@@ -80,7 +82,7 @@ void Game::RobbingTarget(){
   if (target_.Gold() < robber_.AskedAmount()){
     std::cout << "Only "<< target_.Gold()<<" gold? Your life then!" << std::endl;
     robber_.AddGold(target_.Gold());
-    max_gold = std::max(max_gold-20,0);
+    max_gold_ = std::max(max_gold_-20,0);
   } else {
     std::cout << "Stealing your gold! Bye!" << std::endl;
     robber_.AddGold(robber_.AskedAmount());
@@ -99,7 +101,6 @@ void Game::Update() {
   // Check if there's food over here
   if (target_.X() == new_x && target_.Y() == new_y) {
     mode_ = GameState::talk;
-    score++;
     PlaceTarget();
     // Grow robber and increase speed.
     // robber.GrowBody();
@@ -111,7 +112,7 @@ void Game::Update() {
   if (t_delta >= guild_time_ms_){
     robber_.PayRobbersGuild();
     t_start_ = std::chrono::system_clock::now();
-    max_gold++;
+    max_gold_++;
     }
   // Spawn
 }
