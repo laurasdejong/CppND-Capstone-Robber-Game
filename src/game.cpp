@@ -31,7 +31,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
     } else {
       controller.AskForGold(running, robber_);
       RobbingTarget();
-      std::cout << "Robber now has: " << robber_.gold<< std::endl;
+      std::cout << "Robber now has: " << robber_.Gold()<< std::endl;
     }
 
     frame_end = SDL_GetTicks();
@@ -76,10 +76,10 @@ void Game::RobbingTarget(){
   int temp_target = 60;
   if (temp_target < robber_.AskedAmount()){
     std::cout << "Your life then!" << std::endl;
-    robber_.gold += temp_target;
+    robber_.AddGold(temp_target);
   } else {
     std::cout << "Stealing your gold! Bye!" << std::endl;
-    robber_.gold +=robber_.AskedAmount();
+    robber_.AddGold(robber_.AskedAmount());
   }
   mode_ = GameState::walk;
 }
@@ -103,5 +103,5 @@ void Game::Update() {
   }
 }
 
-int Game::GetScore() const { return robber_.gold; }
+int Game::GetScore() const { return robber_.Gold(); }
 // int Game::GetSize() const { return robber_.size; }

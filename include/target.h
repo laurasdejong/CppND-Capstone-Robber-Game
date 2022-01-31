@@ -11,17 +11,23 @@ class Target {
   Target(int grid_width, int grid_height)
       : alive_(true),
         direction(Direction::kUp),
-        gold(0),
+        gold_(0),
         grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),
         head_y(grid_height / 2),
         speed_(0.08f){}
 
-  void Update();
-  bool Alive() const {return alive_;};
+// Getters
+  bool Alive() const {return alive_;}
+  int Gold() const {return gold_;}
 
-  // void GrowBody();
+
+// Setters
+
+// Functions
+  void AddGold(int gold){gold_+=gold;}
+  void Update();
   bool TargetCell(int x, int y);
 
   Direction direction;
@@ -39,11 +45,11 @@ class Target {
   // bool growing{false};
   int grid_width;
   int grid_height;
-  int gold;
 
   private:
-  float townsize_;
   bool alive_;
+  int gold_;
+  float townsize_;
 };
 
 #endif
