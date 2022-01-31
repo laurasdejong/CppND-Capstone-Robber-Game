@@ -49,7 +49,7 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 | Classes use appropriate access specifiers for class members.|:ballot_box_with_check:| For instance, class Target |
 | Class constructors utilize member initialization lists.|:ballot_box_with_check:| For instance, class Target |
 | Classes abstract implementation details from their interfaces.| | |
-| Classes encapsulate behavior.| | |
+| Classes encapsulate behavior.|:ballot_box_with_check:|For instance, class Target|
 | Classes follow an appropriate inheritance hierarchy.| | |
 | Overloaded functions allow the same function to operate on different parameters.| :ballot_box_with_check:|Robber::AskedAmount |
 | Derived class functions override virtual base class functions.| | |
