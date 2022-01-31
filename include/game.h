@@ -20,7 +20,8 @@ class Game {
  private:
   enum GameState{talk, walk};
   Robber robber_;
-  SDL_Point food;
+  Target target_;
+  // SDL_Point food;
 
   std::random_device dev;
   std::mt19937 engine;

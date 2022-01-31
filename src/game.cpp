@@ -8,7 +8,8 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
        mode_(GameState::walk),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)),
-      t_start_(std::chrono::system_clock::now()) {
+      t_start_(std::chrono::system_clock::now()),
+      target_(grid_width,grid_height) {
   PlaceTarget();
 }
 
@@ -28,7 +29,7 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       // Input, Update, Render - the main game loop.
       controller.HandleInput(running, robber_);
       Update();
-      renderer.Render(robber_, food);
+      renderer.Render(robber_, target_);
     } else {
       controller.AskForGold(running, robber_);
       RobbingTarget();
@@ -66,8 +67,8 @@ void Game::PlaceTarget() {
     // Check that the location is not occupied by a robber item before placing
     // food.
     if (!robber_.TargetCell(x, y)) {
-      food.x = x;
-      food.y = y;
+      target_.head_x = x;
+      target_.head_y = y;
       return;
     }
   }
@@ -94,7 +95,7 @@ void Game::Update() {
   int new_y = static_cast<int>(robber_.head_y);
 
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
+  if (target_.head_x == new_x && target_.head_y == new_y) {
     mode_ = GameState::talk;
     score++;
     PlaceTarget();

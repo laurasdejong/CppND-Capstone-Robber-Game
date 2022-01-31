@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Robber const robber, SDL_Point const &food) {
+void Renderer::Render(Robber const robber, Target const target) {
   SDL_Rect block;
   SDL_Rect block2;
   block.w = screen_width / grid_width;
@@ -51,18 +51,26 @@ void Renderer::Render(Robber const robber, SDL_Point const &food) {
   SDL_RenderClear(sdl_renderer);
 
   // Render food
+  // SDL_SetRenderDrawColor(sdl_renderer, 214, 124, 22, 0.8);
+  // block.x = food.x * block.w;
+  // block.y = food.y * block.h;
+  // SDL_RenderFillRect(sdl_renderer, &block);
+  block.x = static_cast<int>(target.head_x) * block.w;
+  block.y = static_cast<int>(target.head_y) * block.h;
   SDL_SetRenderDrawColor(sdl_renderer, 214, 124, 22, 0.8);
-  block.x = food.x * block.w;
-  block.y = food.y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
 
-  // // Render robber's body
-  // SDL_SetRenderDrawColor(sdl_renderer, 0, 0, 0, 0.8);
-  // for (SDL_Point const &point : robber.body) {
-  //   block.x = point.x * block.w;
-  //   block.y = point.y * block.h;
-  //   SDL_RenderFillRect(sdl_renderer, &block);
-  // }
+   // Render robber's eyes
+  block2.x = static_cast<int>(target.head_x) * block.w +block2.w;
+  block2.y = static_cast<int>(target.head_y) * block.h +block2.h;
+  SDL_SetRenderDrawColor(sdl_renderer, 200, 100, 10, 0.8);
+  SDL_RenderFillRect(sdl_renderer, &block2); //left
+  block2.x = static_cast<int>(target.head_x) * block.w +3*block2.w;
+  SDL_RenderFillRect(sdl_renderer, &block2); //right
+
+
+
+
 
   // Render robber's head
   block.x = static_cast<int>(robber.head_x) * block.w;
