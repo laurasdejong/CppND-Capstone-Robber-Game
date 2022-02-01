@@ -8,9 +8,9 @@ Capstone project of Laura de Jong in the Udacity C++ Nanodegree Program, build u
 Clone the project repository:
     ```git clone https://github.com/laurasdejong/CppND-Capstone-Robber-Game.git```
 
-Build the project: ```make build```
+Build the project in REPLACEWITHYOURPATH/CppND-Capstone-Robber-Game: ```make build```
 
-Run the resulting executable in <your path>/CppND-Capstone-Robber-Game/build: ```./robberGame```
+Run the resulting executable in REPLACEWITHYOURPATH/CppND-Capstone-Robber-Game/build: ```./robberGame```
 
 For more info see: https://github.com/udacity/CppND-Capstone-Snake-Game
 
