@@ -1,11 +1,8 @@
 # Options to implement
 
-
-## Instructions
-
-- Fill rubric criteria
-
 ## Game play
+
+- Make some sort of finis or consequence to the game. Either create game.Alive() or inside game.Play()
 
 ### Controller
 - Make controller robust. Bug: when an arrow is pressed in the terminal, the demand is permanently set to 0, skipping the input 'wait'
@@ -25,7 +22,8 @@
 
 - Make targets move
 - Spawn multiple targets
-- Shoudl update go to robber?
+- STransferring update to robber -> Usefull for future moving targets or new function desired?
+- Is alive used & future prove?
 
 ### World
 - Create obstacles
@@ -33,5 +31,4 @@
 
 ### Misc
 
-- Stripping unused functions
 - Magic numbers watch -> read from yaml?

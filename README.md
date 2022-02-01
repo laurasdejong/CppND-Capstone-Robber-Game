@@ -52,7 +52,7 @@ The game ends when either the town is empty, the robber is bankrupt, or the robb
 | Classes encapsulate behavior.|:ballot_box_with_check:|For instance, class Target|
 | Classes follow an appropriate inheritance hierarchy.| | |
 | Overloaded functions allow the same function to operate on different parameters.| :ballot_box_with_check:|Robber::AskedAmount |
-| Derived class functions override virtual base class functions.| | |
+| Derived class functions override virtual base class functions.|-|-|
 | Templates generalize functions in the project.|-|-|
 ### Memory Management
 | Criteria       |Intended| Displayed in  |
