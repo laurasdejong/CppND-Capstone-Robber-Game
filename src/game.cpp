@@ -33,10 +33,18 @@ void Game::Play(Controller const &controller, Renderer &renderer,
       Update();
       renderer.Render(robber_, target_, deaths_);
     } else {
-      std::cout << "debug: target carries" << target_.Gold() << std::endl;
       controller.AskForGold(running, robber_,max_gold_);
       RobbingTarget();
       std::cout << "Robber now has: " << robber_.Gold()<< std::endl;
+    }
+
+    // Check if game over
+    if (robber_.Gold()>500){
+      running = false;
+      std::cout<< "\n\n *** Congratulations, you are robber king! *** \n\n" << std::endl;
+    } else if (robber_.Gold() <= 0){
+      running = false;
+      std::cout<< "\n\n *** Game over: Robber is bankrupt! *** \n\n" << std::endl;
     }
 
     frame_end = SDL_GetTicks();
@@ -84,9 +92,7 @@ void Game::RobbingTarget(){
   if (target_.Gold() < robber_.AskedAmount()){
     std::cout << "Only "<< target_.Gold()<<" gold? Your life then!" << std::endl;
     robber_.AddGold(target_.Gold());
-    max_gold_ = std::max(max_gold_-20,0); //Targets carry less money
-    // SDL_Point death{static_cast<int>(target_.X()),
-    //   static_cast<int>(target_.Y())};
+    max_gold_ = std::max(max_gold_-30,0); //Targets carry less money
     deaths_.push_back(last_position_);
   } else {
     std::cout << "Stealing your gold! Bye!" << std::endl;

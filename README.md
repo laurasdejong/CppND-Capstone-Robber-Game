@@ -16,9 +16,11 @@ For more info see: https://github.com/udacity/CppND-Capstone-Snake-Game
 
 ## Gameplay
 
-The goal of this game is to rob as much gold as possible. The game has two modes. First the robber needs to track its target, after which the game switches to robbing-mode then the robber must decide how much to extort. If the robber asks for more than the target can give, the robber kills the target, and influences future income because of decreased 'town income'(thus, targets wil carry less). However, when the target has the amount the robber asks for, only that amount is transferred to the robber. Each n seconds, the robber has to pay a fee to the 'robbers guild'.
+The goal of this game is to rob as much gold as possible. The game has two modes. First the robber needs to track its target, after which the game switches to robbing-mode then the robber must decide how much to extort. If the robber asks for more than the target can give, the robber kills the target, and influences future income because of decreased 'town income'(thus, targets wil carry less). However, when the target has the amount the robber asks for, only that amount is transferred to the robber. Each second, the robber has to pay a fee to the 'robbers guild', adding pressure to keep robbing.
 
-The game ends when either the town is empty, the robber is bankrupt, or the robber has earned enough to declare himself 'robber king'.
+The game ends when the robber is bankrupt, or the robber has earned enough to declare himself 'robber king'.
+
+! Bug: The game switches between the terminal and the popup. If the arrows are pressed in the terminal, all future input will be ignored.
 
 ## Code structure
 
